@@ -1,0 +1,6 @@
+vpc_availability_zone = "us-east-1a"
+vpc_name              = "test_vpc"
+s3_bucket_name        = "sigg1853ab"
+gateway_api_name      = "test_api_gateway"
+sns_topic_name        = "test_notification"
+ec2_instance_name     = "test_instance"
