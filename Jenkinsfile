@@ -11,12 +11,6 @@ pipeline {
   }
 
   stages {
-    stage('Checkout Code') {
-      steps {
-        echo 'Cloning repository from GitHub...'
-        git branch: 'main', url: 'https://github.com/sumukhabv/terraform-project-task.git'
-      }
-    }
 
     stage('Terraform Init') {
       steps {
