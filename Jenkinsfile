@@ -58,7 +58,7 @@ pipeline {
           credentialsId: 'aws-creds'
         ]]) {
           dir('environment/dev') {
-            sh 'terraform plan -destroy -var-file="terraform.tfvars.json" -out=destroy.tfplan'
+            sh 'terraform plan -destroy -var-file="terraform.tfvars" -out=destroy.tfplan'
           }
         }
       }
