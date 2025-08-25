@@ -77,7 +77,7 @@ pipeline {
           $class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: 'aws-creds'
         ]]) {
-          dir('environment/dev') {
+          dir('/') {
             sh 'terraform apply -auto-approve destroy.tfplan'
           }
         }
