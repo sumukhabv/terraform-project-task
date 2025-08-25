@@ -21,32 +21,32 @@ pipeline {
 
     stage('Terraform Init') {
       steps {
-        dir('/') {
+         
           withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
             credentialsId: 'aws-creds'
           ]]) {
             sh 'terraform init'
           }
-        }
+        
       }
     }
 
     stage('Terraform Format Check') {
       steps {
         echo ' Checking Terraform formatting...'
-        dir('environment/dev') {
+         
           sh 'terraform fmt -check -recursive'
-        }
+        
       }
     }
 
     stage('Terraform Validate') {
       steps {
         echo ' Validating Terraform configuration...'
-        dir('environment/dev') {
+         
           sh 'terraform validate'
-        }
+        
       }
     }
 
@@ -57,9 +57,9 @@ pipeline {
           $class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: 'aws-creds'
         ]]) {
-          dir('/') {
+           
             sh 'terraform plan -destroy -var-file="terraform.tfvars" -out=destroy.tfplan'
-          }
+          
         }
       }
     }
@@ -77,9 +77,9 @@ pipeline {
           $class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: 'aws-creds'
         ]]) {
-          dir('/') {
+           
             sh 'terraform apply -auto-approve destroy.tfplan'
-          }
+          
         }
       }
     }
