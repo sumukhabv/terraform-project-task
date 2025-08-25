@@ -21,7 +21,7 @@ pipeline {
 
     stage('Terraform Init') {
       steps {
-        dir('environment/dev') {
+        dir('/') {
           withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
             credentialsId: 'aws-creds'
@@ -57,7 +57,7 @@ pipeline {
           $class: 'AmazonWebServicesCredentialsBinding',
           credentialsId: 'aws-creds'
         ]]) {
-          dir('environment/dev') {
+          dir('/') {
             sh 'terraform plan -destroy -var-file="terraform.tfvars" -out=destroy.tfplan'
           }
         }
